@@ -1,6 +1,5 @@
 package Coche.Static;
 
-import java.util.concurrent.Callable;
 
 public class Main {
     public static void main(String[] args){
@@ -11,9 +10,9 @@ public class Main {
         Coche otroCocheMas=new Coche();
 //Mostramos ambos coches
         System.out.println("Coche de Juan ");
-        System.out.println(cocheDeJuan.toString());
+        System.out.println(cocheDeJuan);
         System.out.println("Coche de Pepa");
-        System.out.println(cocheDePepa.toString());
+        System.out.println(cocheDePepa);
 // ahora vamos a hacerle kilometros a ambos coches
         cocheDePepa.recorre(30);
         cocheDePepa.recorre(40);
@@ -27,13 +26,13 @@ public class Main {
         System.out.println("el número de coches creados es de "+ Coche.numCoches);
 // estado final de cada coche
         System.out.println("Coche de Juan ");
-        System.out.println(cocheDeJuan.toString());
+        System.out.println(cocheDeJuan);
         System.out.println("Coche de Pepa");
-        System.out.println(cocheDePepa.toString());
+        System.out.println(cocheDePepa);
         System.out.println("Coche 3");
-        System.out.println(otroCoche.toString());
+        System.out.println(otroCoche);
         System.out.println("Coche 4");
-        System.out.println(otroCocheMas.toString());
+        System.out.println(otroCocheMas);
 
 
 
