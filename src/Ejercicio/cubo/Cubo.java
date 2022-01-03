@@ -93,9 +93,6 @@ public class Cubo {
 
         this.contenido = this.capacidad;
     }
-
-
-
     /**
      * Pinta el cubo en la pantalla.
      * Se muestran los bordes del cubo con el carácter # y el
@@ -117,6 +114,26 @@ public class Cubo {
         }
         System.out.println("##########");
     }
+//pintamos con toString
+@Override
+public String toString() {
+    String resultado="";
+    resultado += "propiedades de Cubo:";
+    resultado += ( "\nmaterial " + this.material );
+    resultado += ( "\nasa " + this.asa );
+    resultado += ( "\ncolor " + this.color );
+    resultado += ( "\ncapacidad " + this.capacidad );
+    resultado += ( "\ncontenido " + this.contenido );
+    for (int nivel = this.capacidad; nivel > 0; nivel--) {
+        if (this.contenido >= nivel) {
+            resultado += "\n#~~~~~~~~#";
+        } else {
+            resultado += ( "\n#        #" );
+        }
+    }
+    resultado += ( "\n##########" );
+    return resultado;
+}
 
     /**
      * Vuelca el contenido de un cubo sobre otro.
@@ -141,3 +158,4 @@ public class Cubo {
         }
     }
 }
+

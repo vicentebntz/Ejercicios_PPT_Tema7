@@ -42,5 +42,7 @@ public class Main {
         cubo1.pinta();
         System.out.println("\nCubo2: ");
         cubo2.pinta();
+        System.out.println("\nPinto Cubo2 con toString(): ");
+        System.out.println(cubo2);
     }
 }

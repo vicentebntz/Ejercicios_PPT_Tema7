@@ -11,7 +11,9 @@ public class Cuadrado {
      * la salida es un String
 
      */
+    @Override
     public String toString(){
+
         int i, espacios;
         String resultado = "";
 //pintamos el lado superior con dos ￿￿ ya que el salto de línea mete un espacio y el dibujo
