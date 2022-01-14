@@ -56,7 +56,7 @@ public class Cubo {
     }
 
     // métodos setter
-    /*void setMaterial(String material) {
+    void setMaterial(String material) {
 
         this.material = material;
     }
@@ -68,7 +68,7 @@ public class Cubo {
 
         this.asa = asa;
     }
-       */
+
     public void setCapacidad(int capacidad) {
 
         this.capacidad = capacidad;
@@ -79,19 +79,71 @@ public class Cubo {
         this.contenido = litros;
     }
 
-    // otros métodos
-    // se vacía el cubo
+    /**
+     * Método para vaciar el cubo. No se requiere precondiciones
+     * para vaciar el cubo igualamos el contenido a cero
+      */
     public void vacia() {
-
         this.contenido = 0;
     }
 
     /**
+     * Método sobrecargado de vacia(). se vaciará el cubo en tantos litros como se indique por parámetros.
+     * si la cantidad de litros es negativa o 0 se devovlera un -1,si se desea vaciar más litros que el contenido
+     * del cubo, devolverá la cantidad de litros que sobran y vaciará el cubo, si no, vaciará el cubo en los
+     * litros indicados y devolverá 0
+      * @param litros
+     * @return
+     */
+    public int vacia(int litros){
+        int rtdo;
+        if (litros <= 0)
+            rtdo=-1;
+        else
+            if (litros > (this.capacidad-this.contenido)) {
+                this.vacia();
+                rtdo = litros - this.capacidad;
+            }else{
+                this.capacidad -= litros;
+                rtdo=0;
+
+            }
+        return rtdo;
+    }
+
+    /**
      * Llena el cubo al máximo de su capacidad.
+     * NO se requieren precondiciones
+     * Para llenar el cubo igualamos el contenido a la capacidad
      */
     public void llena() {
-
         this.contenido = this.capacidad;
+    }
+
+    /**
+     * Precondición. ninguna
+     * Método llena sobrecargado. el método validará que los litros a llenar han de ser > que 0
+     * si rebosa el cubo devolverá el número de litros que no ha podido llenar, si los litros son negativos,
+     * devolverá -1, en caso contrario devolverá 0
+     * @param litros
+     * @return entero que indica si se ha podido realizar la opción y en su caso los litros que no han cabido en
+     * el cubo destino
+     */
+    public int llena (int litros){
+        int rtdo;
+        if (litros <= 0)
+            rtdo = -1;
+        else
+            if (litros> (this.capacidad-this.contenido)) {
+                this.llena();
+                rtdo = litros - this.capacidad;
+            }else{
+                this.contenido+=litros;
+                rtdo=0;
+            }
+        return rtdo;
+
+
     }
     /**
      * Pinta el cubo en la pantalla.
@@ -143,19 +195,44 @@ public String toString() {
     /**
      * Vuelca un cubo en otro
      * @param cuboOrigen
+     * vuelca un cubo en otro solo la cantidad de litros que quepa en el cubo destino
+     * he creado dos métodos distintos. este primero no lo llama nadie, solo de muestra
      */
-    public void volcarCubo(Cubo cuboOrigen){
-        int capacidadLibre= this.capacidad-this.contenido;
+    public void volcarCubo1(Cubo cuboOrigen) {
+        int capacidadLibre = this.capacidad - this.contenido;
         //controlo si me va a caber o no toda el agua en el cubo destino(this)
-        if (cuboOrigen.getContenido() <=capacidadLibre ) {
-            this.contenido+=cuboOrigen.getContenido();
+        if (cuboOrigen.getContenido() <= capacidadLibre) {
+            this.contenido += cuboOrigen.getContenido();
             cuboOrigen.vacia();
-        }
-        else {
+        } else {
 
-            cuboOrigen.setContenido(cuboOrigen.getContenido()-capacidadLibre);
+            cuboOrigen.setContenido(cuboOrigen.getContenido() - capacidadLibre);
             this.llena();
         }
     }
+
+    /**
+     *
+     * @param cuboOrigen
+     * Similar al método anterior pero reusando los métodos de llenar y vaciar sobrecargados
+     *
+     */
+        public void volcarCubo(Cubo cuboOrigen){
+//control es para saber el resultado del método llena
+            int control;
+//lamo al metodo de llenar para llenar el cubo destino con el contenido del cubo origen
+            control= this.llena(cuboOrigen.contenido);
+            if (control>0){
+                cuboOrigen.vacia();
+                cuboOrigen.llena(control);
+            }
+            else{
+                if (control==0){
+                    cuboOrigen.vacia();
+                }
+            }
+
+    }
+
 }
 
