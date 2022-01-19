@@ -122,7 +122,7 @@ public class Cubo {
 
     /**
      * Precondición. ninguna
-     * Método llena sobrecargado. el método validará que los litros a llenar han de ser > que 0
+     * Método llena sobrecargado. el método validará que los litros a llenar han de ser >= que 0
      * si rebosa el cubo devolverá el número de litros que no ha podido llenar, si los litros son negativos,
      * devolverá -1, en caso contrario devolverá 0
      * @param litros
@@ -131,7 +131,7 @@ public class Cubo {
      */
     public int llena (int litros){
         int rtdo;
-        if (litros <= 0)
+        if (litros < 0)
             rtdo = -1;
         else
             if (litros> (this.capacidad-this.contenido)) {
@@ -169,22 +169,32 @@ public class Cubo {
 //pintamos con toString
 @Override
 public String toString() {
-    String resultado="";
-    resultado += "propiedades de Cubo:";
-    resultado += ( "\nmaterial " + this.material );
-    resultado += ( "\nasa " + this.asa );
-    resultado += ( "\ncolor " + this.color );
-    resultado += ( "\ncapacidad " + this.capacidad );
-    resultado += ( "\ncontenido " + this.contenido );
+    StringBuilder stringBuilder= new StringBuilder();
+    stringBuilder.append("propiedades de Cubo:");
+    stringBuilder.append(System.lineSeparator());
+    stringBuilder.append("material " + this.material );
+    stringBuilder.append(System.lineSeparator());
+    stringBuilder.append ( "asa " + this.asa );
+    stringBuilder.append(System.lineSeparator());
+    stringBuilder.append ( "color " + this.color );
+    stringBuilder.append(System.lineSeparator());
+    stringBuilder.append ( "capacidad " + this.capacidad );
+    stringBuilder.append(System.lineSeparator());
+    stringBuilder.append ( "contenido " + this.contenido );
+    stringBuilder.append(System.lineSeparator());
     for (int nivel = this.capacidad; nivel > 0; nivel--) {
         if (this.contenido >= nivel) {
-            resultado += "\n#~~~~~~~~#";
+            stringBuilder.append(System.lineSeparator());
+            stringBuilder.append ("#~~~~~~~~#");
+
         } else {
-            resultado += ( "\n#        #" );
+            stringBuilder.append(System.lineSeparator());
+            stringBuilder.append( "#        #" );
         }
     }
-    resultado += ( "\n##########" );
-    return resultado;
+    stringBuilder.append(System.lineSeparator());
+    stringBuilder.append( "##########" );
+    return stringBuilder.toString();
 }
 
     /**
@@ -234,5 +244,16 @@ public String toString() {
 
     }
 
+    /**
+     * similar al método anterior pero más simplificado aún
+     * @param cuboOrigen
+     */
+    public void volcarCubo2(Cubo cuboOrigen) {
+// directamen lleno el cubo destino, vacío el origen y lo lleno con lo que me devuelva el método de
+// llenado del cubo
+        int control = this.llena(cuboOrigen.contenido);
+        this.vacia();
+        this.llena(control);
+    }
 }
 

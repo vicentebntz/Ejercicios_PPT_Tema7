@@ -29,7 +29,7 @@ public class Main {
 //Vamos a volcar el cubo primero en el segundo y vamos a pintar ambos cubos
 
         System.out.println("\nAhora vuelco lo que tiene el cubo1 en el cubo2.\n");
-        cubo2.volcarCubo(cubo1);
+        cubo2.volcarCubo2(cubo1);
         System.out.println("Cubo1: ");
         cubo1.pinta();
         System.out.println("\nCubo2:");
@@ -37,7 +37,7 @@ public class Main {
 //Vamos a llenar el segundo cubo y lo vamos a volcar en el primero y vamos a pintar ambos cubos
         System.out.println("\nAhora lleno el cubo 2 y lo vuelco en el cubo1");
         cubo2.llena();
-        cubo1.volcarCubo(cubo2);
+        cubo1.volcarCubo2(cubo2);
         System.out.println("Cubo1: ");
         cubo1.pinta();
         System.out.println("\nCubo2: ");
