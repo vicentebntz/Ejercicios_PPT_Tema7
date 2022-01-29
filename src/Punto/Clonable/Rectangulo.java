@@ -2,16 +2,16 @@ package Punto.Clonable;
 
 public class Rectangulo implements Cloneable {
 // Punto origen, objeto de la clase punto
-    private Punto origen;
+    private PuntoClo origen;
     //dimensiones
     private int ancho, alto;
 //Contructores
     public Rectangulo(){
-        this.origen=new Punto(0,0);
+        this.origen=new PuntoClo(0,0);
         this.alto=0;
         this.ancho=0;
     }
-    public Rectangulo(Punto p, int alto, int ancho){
+    public Rectangulo(PuntoClo p, int alto, int ancho){
         this.origen=p;
         this.alto=alto;
         this.ancho=ancho;
@@ -26,7 +26,7 @@ public class Rectangulo implements Cloneable {
             System.out.println("no se ha podido clonar el rectángulo");
         }
 //conamos el objeto punto del rectángulo
-        obj.origen = (Punto)obj.origen.clone();
+        obj.origen = (PuntoClo)obj.origen.clone();
         return obj;
      }
     public Object cloneSuperficial(){
@@ -41,7 +41,7 @@ public class Rectangulo implements Cloneable {
         return obj;
     }
 
-    public Punto getOrigen() {
+    public PuntoClo getOrigen() {
         return this.origen;
     }
     public String toString(){

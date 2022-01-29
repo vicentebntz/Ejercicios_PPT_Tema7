@@ -29,6 +29,7 @@ public class EjemplosLocalDate {
         LocalDate fecha4 = fecha3.plusDays(10);
         System.out.println("fecha de hoy más 10 días = " + fecha4);
 
+
 //sumo 5 días a la fecha anterior con otro método indicando en los argumentos las unidades y a la
 // parte de la fecha a la que afecta
         LocalDate fecha5 = fecha4.plus(5, ChronoUnit.DAYS);

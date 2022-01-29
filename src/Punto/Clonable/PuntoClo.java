@@ -1,18 +1,21 @@
 package Punto.Clonable;
 
-public class Punto implements Cloneable{
+public class PuntoClo implements Cloneable{
     private int x;
     private int y;
+
+
+
 
     /**
      * constructores por defecto y con argumnentos
      */
-    public Punto(){
+    public PuntoClo(){
     this.x=0;
     this.y=0;
 
     }
-    public Punto(int x, int y){
+    public PuntoClo(int x, int y){
         this.x=x;
         this.y=y;
 
@@ -25,9 +28,9 @@ public class Punto implements Cloneable{
      * dentro de código que controle la excepcion
      */
     public Object clone(){
-        Punto obj = null;
+        PuntoClo obj = null;
         try {
-            obj = (Punto) super.clone();
+            obj = (PuntoClo) super.clone();
         } catch (CloneNotSupportedException e){
             System.out.println("no se ha podido duplicar el objeto");
         }
@@ -44,12 +47,11 @@ public class Punto implements Cloneable{
     this.y +=dy;
     }
 
-    public String toString(){
+  /*  public String toString(){
         String display = "";
         display = " Coordenadas x,y: "+this.x+ ", " + this.y;
         return display;
-
-    }
+    }*/
 // getter
     public int getX(){
         return this.x;
@@ -57,5 +59,7 @@ public class Punto implements Cloneable{
     public int getY(){
         return this.y;
     }
+
+
 
 }
